@@ -51,5 +51,10 @@ namespace Calculator_WPF_
         {
             txtResult.Text += "+";
         }
+
+        private void MinusClick(object sender, RoutedEventArgs e)
+        {
+            txtResult.Text += "-";
+        }
     }
 }

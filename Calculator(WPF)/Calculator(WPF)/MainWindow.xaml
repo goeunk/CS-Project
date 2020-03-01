@@ -21,7 +21,7 @@
         <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" Height="65" Margin="20, 260, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30" Click="UpdateNumber"/>
         <Button x:Name="btn2" Content="2" HorizontalAlignment="Left" Height="65" Margin="95, 260, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30" Click="UpdateNumber"/>
         <Button x:Name="btn3" Content="3" HorizontalAlignment="Left" Height="65" Margin="170, 260, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30" Click="UpdateNumber"/>
-        <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Height="65" Margin="245, 260, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30"/>
+        <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Height="65" Margin="245, 260, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30" Click="MinusClick"/>
         <Button x:Name="btn0" Content="0" HorizontalAlignment="Left" Height="65" Margin="20, 335, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30" Click="UpdateNumber"/>
         <Button x:Name="btnDot" Content="." HorizontalAlignment="Left" Height="65" Margin="95, 335, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30"/>
         <Button x:Name="btnEql" Content="=" HorizontalAlignment="Left" Height="65" Margin="170, 335, 5, 5" VerticalAlignment="Top" Width="65" FontSize="30"/>
