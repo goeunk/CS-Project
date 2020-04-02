@@ -14,4 +14,9 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookShoppingMall.Models\BookShoppingMall.Models.csproj" />
+    <ProjectReference Include="..\BookShoppingMall.Utility\BookShoppingMall.Utility.csproj" />
+  </ItemGroup>
+
 </Project>
