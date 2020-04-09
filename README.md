@@ -22,3 +22,7 @@ https://fontawesome.com/
 
 Toastr
 https://github.com/CodeSeven/toastr
+
+
+## What is a Repository?
+Repository will be a generic way of accessing common functionalities like Get, GetAll, GetFirstOrDefault, Add or Remove.
