@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BookShoppingMall.DataAccess.Data;
+using BookShoppingMall.DataAccess.Repository.IRepository;
+using BookShoppingMall.DataAccess.Repository;
 
 namespace BookShoppingMall
 {
@@ -33,6 +35,7 @@ namespace BookShoppingMall
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
