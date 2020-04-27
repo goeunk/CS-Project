@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BookShoppingMall.DataAccess.Repository.IRepository;
@@ -59,25 +60,60 @@ namespace BookShoppingMall.Areas.Admin.Controllers
             return View(productVM);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Upsert(Product product)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        if(product.Id == 0)
-        //        {
-        //            _unitOfWork.Product.Add(product);
-        //        }
-        //        else
-        //        {
-        //            _unitOfWork.Product.Update(product);
-        //        }
-        //        _unitOfWork.Save();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(product);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Upsert(ProductVM productVM)
+        {
+            #region Image
+            if (ModelState.IsValid)
+            {
+                string webRootPath = _hostEnvironment.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+                if (files.Count > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\products");
+                    var extension = Path.GetExtension(files[0].FileName);
+
+                    if (productVM.Product.ImageUrl != null)
+                    {
+                        //this is an edit and we need to remove old image
+                        var imagePath = Path.Combine(webRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        files[0].CopyTo(filesStreams);
+                    }
+                    productVM.Product.ImageUrl = @"\images\product" + fileName + extension;
+                }
+                else
+                {
+                    //update when they do not change the image
+                    if (productVM.Product.Id != 0)
+                    {
+                        Product objFromDb = _unitOfWork.Product.Get(productVM.Product.Id);
+                        productVM.Product.ImageUrl = objFromDb.ImageUrl;
+                    }
+                }
+                #endregion
+
+                if (productVM.Product.Id == 0)
+                {
+                    _unitOfWork.Product.Add(productVM.Product);
+                }
+                else
+                {
+                    _unitOfWork.Product.Update(productVM.Product);
+                }
+                _unitOfWork.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(productVM);
+        }
 
         #region API CALLS
 
