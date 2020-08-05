@@ -137,7 +137,7 @@ namespace BookShoppingMall.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var allObj = _unitOfWork.Product.GetAll(includeProperties:"Category, CoverType");
+            var allObj = _unitOfWork.Product.GetAll(includeProperties: "Category, CoverType");
             return Json(new { data = allObj });
         }
 
@@ -145,7 +145,7 @@ namespace BookShoppingMall.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.Product.Get(id);
-            if(objFromDb == null)
+            if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting" });
             }
