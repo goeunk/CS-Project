@@ -109,6 +109,7 @@
             this.txtUserGuessNumber.Name = "txtUserGuessNumber";
             this.txtUserGuessNumber.Size = new System.Drawing.Size(125, 27);
             this.txtUserGuessNumber.TabIndex = 4;
+            this.txtUserGuessNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserGuessNumber_KeyPress);
             // 
             // pbDieImage
             // 
@@ -120,21 +121,25 @@
             // 
             // btnRoll
             // 
+            this.btnRoll.Enabled = false;
             this.btnRoll.Location = new System.Drawing.Point(243, 266);
             this.btnRoll.Name = "btnRoll";
             this.btnRoll.Size = new System.Drawing.Size(94, 29);
             this.btnRoll.TabIndex = 6;
             this.btnRoll.Text = "Roll";
             this.btnRoll.UseVisualStyleBackColor = true;
+            this.btnRoll.Click += new System.EventHandler(this.cmdRoll_Click);
             // 
             // btnReset
             // 
+            this.btnReset.Enabled = false;
             this.btnReset.Location = new System.Drawing.Point(243, 327);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(94, 29);
             this.btnReset.TabIndex = 6;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.cmdReset_Click);
             // 
             // rtxtStat
             // 
@@ -143,6 +148,7 @@
             this.rtxtStat.Size = new System.Drawing.Size(700, 227);
             this.rtxtStat.TabIndex = 7;
             this.rtxtStat.Text = "";
+            this.rtxtStat.TextChanged += new System.EventHandler(this.rtxtStat_TextChanged);
             // 
             // lblNumPlayedCount
             // 
@@ -157,27 +163,27 @@
             this.lblPlayedCount.AutoSize = true;
             this.lblPlayedCount.Location = new System.Drawing.Point(258, 77);
             this.lblPlayedCount.Name = "lblPlayedCount";
-            this.lblPlayedCount.Size = new System.Drawing.Size(50, 20);
+            this.lblPlayedCount.Size = new System.Drawing.Size(17, 20);
             this.lblPlayedCount.TabIndex = 9;
-            this.lblPlayedCount.Text = "label1";
+            this.lblPlayedCount.Text = "0";
             // 
             // lblWonCount
             // 
             this.lblWonCount.AutoSize = true;
             this.lblWonCount.Location = new System.Drawing.Point(258, 112);
             this.lblWonCount.Name = "lblWonCount";
-            this.lblWonCount.Size = new System.Drawing.Size(50, 20);
+            this.lblWonCount.Size = new System.Drawing.Size(17, 20);
             this.lblWonCount.TabIndex = 9;
-            this.lblWonCount.Text = "label1";
+            this.lblWonCount.Text = "0";
             // 
             // lblLostCount
             // 
             this.lblLostCount.AutoSize = true;
             this.lblLostCount.Location = new System.Drawing.Point(258, 146);
             this.lblLostCount.Name = "lblLostCount";
-            this.lblLostCount.Size = new System.Drawing.Size(50, 20);
+            this.lblLostCount.Size = new System.Drawing.Size(17, 20);
             this.lblLostCount.TabIndex = 9;
-            this.lblLostCount.Text = "label1";
+            this.lblLostCount.Text = "0";
             // 
             // GameForm
             // 
